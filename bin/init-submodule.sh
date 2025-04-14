@@ -8,6 +8,8 @@ eval "$(ssh-agent -s)"
 # Add SSH key from env, converting \n to real newlines and removing stray \r
 echo -e "$GIT_SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
 
+ssh-add -l
+
 # Ensure .ssh dir and known_hosts file exist and are secure
 mkdir -p ~/.ssh
 chmod 700 ~/.ssh
