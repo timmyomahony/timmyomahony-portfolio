@@ -48,7 +48,7 @@ This is set up as a Git submodule.
 When first cloning the repo, you need to use:
 
 ```sh
-git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-content.git
+git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-content.git content
 ```
 
 If already cloned, use the following to set up the submodule:
