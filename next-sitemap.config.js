@@ -1,4 +1,4 @@
-import config from "@/../portfolio.config";
+const config = require("./portfolio.config");
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {

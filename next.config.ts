@@ -1,3 +1,4 @@
+import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import withPlaiceholder from "@plaiceholder/next";
 import withToc from "@stefanprobst/rehype-extract-toc";
@@ -9,7 +10,7 @@ import remarkReadingTime from "remark-reading-time";
 import readingMdxTime from "remark-reading-time/mdx.js";
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   trailingSlash: true,
   reactStrictMode: true,
