@@ -1,25 +1,37 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -e
+set -Eeuo pipefail
 
-# Start the SSH agent
-eval "$(ssh-agent -s)"
+GITMODULES=".gitmodules"
+FEXT=".bak"
+GITMODULES_BACKUP="${GITMODULES}${FEXT}"
 
-# Add SSH key from env, converting \n to real newlines and removing stray \r
-echo -e "$GIT_SSH_KEY" | tr -d '\r' | ssh-add - > /dev/null
+function cleanup {
+  echo "Cleaning the runner..."
+  rm -f "$GITMODULES" "$GITMODULES_BACKUP"
+  git restore "$GITMODULES"
+  echo "Done!"
+}
 
-ssh-add -l
+trap cleanup EXIT
 
-# Ensure .ssh dir and known_hosts file exist and are secure
-mkdir -p ~/.ssh
-chmod 700 ~/.ssh
-touch ~/.ssh/known_hosts
-chmod 600 ~/.ssh/known_hosts
+function submodule_workaround {
+  if [ "$GITHUB_REPO_CLONE_TOKEN" == "" ]; then
+    echo "GITHUB_REPO_CLONE_TOKEN is empty!"
+    exit 1
+  fi
 
-# Append GitHub's fingerprint directly
-cat >> ~/.ssh/known_hosts <<EOF
-github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
-EOF
+  echo "Monkey patching..."
+  sed -i"$FEXT" "s/git@github.com:/https:\/\/oauth2:${GITHUB_REPO_CLONE_TOKEN}@github.com\//" "$GITMODULES"
+  echo "Done!"
 
-# Clone the submodule repo
-git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-content.git content
+  echo "Synchronising submodules' remote URL configuration..."
+  git submodule sync
+  echo "Done!"
+
+  echo "Updating the registered submodules to match what the superproject expects..."
+  git submodule update --init --recursive --jobs "$(getconf _NPROCESSORS_ONLN)"
+  echo "Done!"
+}
+
+submodule_workaround
