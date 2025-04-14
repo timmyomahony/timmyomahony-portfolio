@@ -1,37 +1,30 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-set -Eeuo pipefail
+# Move to the repo root
+cd "$(git rev-parse --show-toplevel)"
 
-GITMODULES=".gitmodules"
-FEXT=".bak"
-GITMODULES_BACKUP="${GITMODULES}${FEXT}"
+# Ensure we’re not in a detached HEAD or bare repo
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Not inside a valid Git working tree."
+  exit 1
+fi
 
-function cleanup {
-  echo "Cleaning the runner..."
-  rm -f "$GITMODULES" "$GITMODULES_BACKUP"
-  git restore "$GITMODULES"
-  echo "Done!"
-}
+# Remove existing submodule entry (if any)
+if git config --file .gitmodules --get-regexp "^submodule\.content\." > /dev/null 2>&1; then
+  echo "Removing existing submodule config..."
+  git submodule deinit -f content || true
+  git rm -f content || true
+  rm -rf .git/modules/content
+fi
 
-trap cleanup EXIT
+# Clean local content dir if needed
+rm -rf content
 
-function submodule_workaround {
-  if [ "$GITHUB_REPO_CLONE_TOKEN" == "" ]; then
-    echo "GITHUB_REPO_CLONE_TOKEN is empty!"
-    exit 1
-  fi
+# Add the submodule
+echo "Adding submodule..."
+git submodule add -f "https://timmyomahony:${GITHUB_REPO_CLONE_TOKEN}@github.com/timmyomahony/timmyomahony-content.git" content
 
-  echo "Monkey patching..."
-  sed -i"$FEXT" "s/git@github.com:/https:\/\/oauth2:${GITHUB_REPO_CLONE_TOKEN}@github.com\//" "$GITMODULES"
-  echo "Done!"
-
-  echo "Synchronising submodules' remote URL configuration..."
-  git submodule sync
-  echo "Done!"
-
-  echo "Updating the registered submodules to match what the superproject expects..."
-  git submodule update --init --recursive --jobs "$(getconf _NPROCESSORS_ONLN)"
-  echo "Done!"
-}
-
-submodule_workaround
+# Sync & init
+git submodule sync
+git submodule update --init --recursive
