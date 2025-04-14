@@ -1,9 +1,9 @@
-const config = require("./portfolio.config");
-
 /** @type {import('next-sitemap').IConfig} */
-module.exports = {
-  siteUrl: config.url,
+const sitemapConfig = {
+  siteUrl: "https://timmyomahony.com",
   generateRobotsTxt: true,
   changefreq: "weekly",
   priority: 0.7,
 };
+
+module.exports = sitemapConfig;
