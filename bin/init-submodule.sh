@@ -14,8 +14,10 @@ chmod 700 ~/.ssh
 touch ~/.ssh/known_hosts
 chmod 600 ~/.ssh/known_hosts
 
-# Trust GitHub's SSH host key
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+# Append GitHub's fingerprint directly
+cat >> ~/.ssh/known_hosts <<EOF
+github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+EOF
 
 # Clone the submodule repo
 git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-content.git content
