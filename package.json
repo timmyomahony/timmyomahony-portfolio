@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "install:vercel": "bash ./bin/init-submodule.sh && next build",
+    "install:vercel": "bash ./bin/init-submodule.sh && npm install",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc",
