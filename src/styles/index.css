@@ -1,0 +1,374 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-display: swap;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+/* Types */
+@layer utilities {
+  /* Heading 1 */
+  .heading-1 {
+    @apply font-noto text-3xl font-medium leading-tight;
+  }
+
+  @screen md {
+    .heading-1 {
+      @apply leading-tight;
+    }
+  }
+
+  @screen xl {
+    .heading-1 {
+      @apply text-4xl leading-tight;
+    }
+  }
+
+  @screen 2xl {
+    .heading-1 {
+      @apply text-5xl leading-snug;
+    }
+  }
+
+  /* Heading 2 */
+  .heading-2 {
+    @apply font-noto text-2xl font-medium leading-tight;
+  }
+
+  @screen md {
+    .heading-2 {
+    }
+  }
+
+  @screen lg {
+    .heading-2 {
+      @apply leading-tight;
+      font-size: 2rem;
+    }
+  }
+
+  @screen 2xl {
+    .heading-2 {
+      @apply leading-snug;
+      font-size: 2.5rem;
+    }
+  }
+
+  /* Heading 3 */
+  .heading-3 {
+    @apply font-noto text-xl font-medium leading-normal;
+  }
+
+  @screen xl {
+    .heading-3 {
+      @apply text-2xl leading-normal;
+    }
+  }
+
+  @screen 2xl {
+    .heading-3 {
+      @apply text-3xl leading-normal;
+    }
+  }
+
+  /* Subheading 1 */
+  .subheading-2 {
+  }
+
+  @screen lg {
+    .subheading-2 {
+    }
+  }
+
+  @screen 2xl {
+    .subheading-2 {
+      @apply font-inter text-3xl leading-normal;
+    }
+  }
+
+  /* Callout 0 */
+  .callout-0 {
+    @apply font-overpass text-xs font-semibold uppercase leading-7 tracking-[0.2em] text-ruby;
+  }
+
+  @screen 2xl {
+    .callout-0 {
+      @apply text-sm;
+    }
+  }
+
+  /* Callout 1 */
+  .callout-1 {
+    @apply font-overpass text-xs font-semibold uppercase leading-7 tracking-[0.2em] text-ruby;
+  }
+
+  @screen 2xl {
+    .callout-1 {
+      @apply text-base;
+    }
+  }
+
+  /* Callout 2 */
+  .callout-2 {
+    @apply font-overpass text-xs font-semibold uppercase leading-6 tracking-[0.2em] text-ruby;
+  }
+
+  @screen 2xl {
+    .callout-2 {
+      @apply text-sm;
+    }
+  }
+
+  /* Body 0 */
+  .body-0 {
+    @apply font-inter text-sm leading-normal;
+  }
+
+  @screen md {
+    .body-0 {
+      @apply text-base leading-normal;
+    }
+  }
+
+  @screen xl {
+    .body-0 {
+      @apply text-lg leading-normal;
+    }
+  }
+
+  @screen 2xl {
+    .body-0 {
+      @apply text-xl leading-normal;
+    }
+  }
+
+  /* Body 1 */
+  .body-1 {
+    @apply font-inter text-base leading-normal;
+  }
+
+  @screen md {
+    .body-1 {
+      @apply text-lg leading-normal;
+    }
+  }
+
+  @screen xl {
+    .body-1 {
+      @apply text-xl leading-normal;
+    }
+  }
+
+  @screen 2xl {
+    .body-1 {
+      @apply text-2xl leading-normal;
+    }
+  }
+
+  /* Body 2 */
+  .body-2 {
+    @apply font-inter text-base leading-normal;
+  }
+
+  @screen md {
+    .body-2 {
+      @apply text-base leading-normal;
+    }
+  }
+
+  @screen xl {
+    .body-2 {
+      @apply text-lg leading-normal;
+    }
+  }
+
+  @screen 2xl {
+    .body-2 {
+      @apply text-xl leading-normal;
+    }
+  }
+}
+
+/* MDX */
+.callout__content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Inline Code */
+:not(.mdx-code) > code {
+  @apply rounded-md border border-[#e5e7eb] bg-[#f7f7f7] px-1 py-0.5 text-[85%];
+}
+
+/* Block Code */
+[data-rehype-pretty-code-fragment],
+[data-rehype-pretty-code-figure] {
+  @apply mb-14 mt-14 font-ibm 2xl:mt-16;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply mb-2 block w-full font-ibm text-xs text-stone-500;
+}
+
+[data-rehype-pretty-code-caption] {
+  @apply mt-2 block w-full font-ibm text-xs text-stone-500;
+}
+
+[data-line] {
+  @apply px-3 py-px lg:px-5;
+}
+
+[data-highlighted-line] {
+  @apply bg-blue-900 bg-opacity-40 px-3 py-px lg:px-5;
+}
+
+.mdx-code {
+  @apply block overflow-auto rounded-lg bg-[#202939] py-3 font-ibm text-[115%] leading-tight text-[#f7f7f7] lg:py-4;
+}
+
+.mdx-code code {
+  @apply text-sm;
+}
+
+.mdx-code code[data-line-numbers] {
+  counter-reset: line;
+}
+
+.mdx-code code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 0.75rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+.mdx-code code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 1.25rem;
+}
+
+.mdx-code code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 1.75rem;
+}
+
+.mdx-code code[data-line-numbers-max-digits="4"] > [data-line]::before {
+  width: 2.25rem;
+}
+
+@screen 2xl {
+  .mdx-code {
+    @apply mb-16;
+  }
+
+  .mdx-code code {
+    @apply text-base;
+  }
+}
+
+/* Paragraph */
+.mdx-paragraph {
+  @apply mb-6 text-base leading-relaxed xl:text-lg 2xl:text-xl;
+}
+
+@screen 2xl {
+  .mdx-paragraph {
+    @apply mb-8 text-xl;
+  }
+}
+
+/* Link */
+.mdx-a {
+  @apply cursor-ne-resize text-ruby underline;
+}
+
+/* Blockquote */
+.mdx-blockquote {
+  @apply mb-6 border-l border-black pl-6 font-noto;
+}
+
+.mdx-blockquote > .mdx-paragraph {
+  /* @apply mb-0; */
+}
+
+@screen 2xl {
+  .mdx-blockquote {
+    @apply mb-8;
+  }
+}
+
+/* Lists */
+.mdx-list {
+  @apply mb-8 ml-4 lg:ml-5;
+}
+
+@screen 2xl {
+  .mdx-list {
+    @apply mb-10;
+  }
+}
+
+/* List Item */
+.mdx-list-item {
+  @apply mb-3 pl-2 text-base leading-relaxed lg:mb-6 lg:pl-3 lg:text-lg 2xl:mb-8 2xl:text-xl;
+}
+
+@screen 2xl {
+  .mdx-list-item {
+    @apply 2xl:mb-8 2xl:text-xl;
+  }
+}
+
+/* Slider */
+.yarl__button {
+  filter: none;
+}
+
+.yarl__slide_title {
+  @apply text-base font-normal text-black;
+}
+
+.yarl__slide_description {
+  @apply text-xs font-normal text-black;
+}
+
+.yarl__slide_captions_container {
+  background: none;
+}
+
+/* Toastify */
+.Toastify__toast-container {
+  @apply w-auto;
+}
+
+.Toastify__toast {
+  @apply min-h-min w-auto rounded-full;
+}
+
+.Toastify__toast-body {
+  @apply m-0 p-2 font-inter text-xs font-bold leading-none;
+}
