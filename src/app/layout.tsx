@@ -4,6 +4,7 @@ import "yet-another-react-lightbox/plugins/captions.css";
 import "react-toastify/dist/ReactToastify.css";
 import "@/styles/index.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import config from "@/../portfolio.config";
 
 import {
   Inter,
@@ -69,30 +70,25 @@ const RootLayout = ({ children }) => {
 
 // https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields
 const generateMetadata = async () => {
-  const defaultTitle =
-    "Full-stack web & software developer from Dublin, Ireland";
-  const defaultDescription =
-    "Full-stack web & software developer from Dublin, Ireland. ";
-
   const metadata: Metadata = {
-    metadataBase: new URL("https://timmyomahony.com"),
+    metadataBase: new URL(config.url),
     title: {
-      template: "%s | Timmy O'Mahony",
-      default: defaultTitle,
+      template: `%s | ${config.name}`,
+      default: config.byline,
     },
     twitter: {
       card: "summary_large_image",
-      title: defaultTitle,
-      description: defaultDescription,
+      title: config.byline,
+      description: config.byline,
     },
     openGraph: {
-      title: defaultTitle,
-      description: defaultDescription,
-      siteName: "Timmy O'Mahony",
+      title: config.byline,
+      description: config.byline,
+      siteName: config.name,
       locale: "en-IE",
     },
-    authors: [{ name: "Timmy O'Mahony", url: "https://timmyomahony.com" }],
-    creator: "Timmy O'Mahony",
+    authors: [{ name: config.name, url: config.url }],
+    creator: config.name,
   };
 
   return metadata;
