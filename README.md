@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-![Screenshot of my homepage](https://timmyomahony.com)
+![Screenshot of my homepage](./screenshot.jpg)
 
 My personal portfolio website at [https://timmyomahony.com](https://timmyomahony.com).
 
