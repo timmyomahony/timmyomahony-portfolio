@@ -6,7 +6,7 @@ My personal portfolio website at [https://timmyomahony.com](https://timmyomahony
 
 ## Background
 
-I get a good bit of traffic from various "portfolio inspiration" blog posts around the web, along with occasional inquiries about how the site it put together. With that in mind I decided to open-source the codebase so that other people can use it too. So here it is.
+I get a lot of traffic from various "portfolio inspiration" blog posts around the web, along with occasional inquiries about how the site it put together. With that in mind I decided to open-source the codebase so that other people can use it too. So here it is.
 
 It's a mix of a personal website, developer portfolio and photography blog. It's built with Next.js and is intended to be deployed as a statically generated site. That means there's no "server" and all the content is rendered at build-time. It's also full of pictures of me as well as information that's only relevant to me, so you'll have to do some ground-work to personalise it.
 
@@ -16,7 +16,7 @@ It's a mix of a personal website, developer portfolio and photography blog. It's
 
 The website is developed with Next.js and is intended to be statically generated (i.e. no backend). In order to do that, the content is mostly separated from the codebase.
 
-There are a number of types of content in-use:
+There are a number of types of content in-use throughout the site:
 
 - **Static content**: like the [home page](https://timmyomahony.com/), [about page](https://timmyomahony.com/about/) and [advisory page](https://timmyomahony.com/advisory/). These are just hard-coded marketing-style pages using Next.js's app router and custom components.
 - **Dynamic content**: like the [blog](https://timmyomahony.com/blog/), [projects section](https://timmyomahony.com/projects/), ["now" page](https://timmyomahony.com/now/) and other ["generic" pages](https://timmyomahony.com/privacy-policy/). When the website is built, these are fetched from a "./content" folder that I manage via a Git submodule. All content is written with MDX
@@ -35,20 +35,21 @@ If you want some example content to get started, you can set up a Git submodule 
 git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-portfolio-example-content.git
 ```
 
-## MDX Content
+## Content
 
-MDX content for the website should be placed in the `/content` folder like so:
+MDX content for the website is placed in the `/content` folder like so:
 
 - `/content/posts`
 - `/content/pages/`
 - `/content/projects/`
+- `/content/now/`
 
-This is set up as a Git submodule.
+I've set this up as a Git submodule so that my content isn't public, but you don't have to - it's tricky to deploy a private submodule via Vercel.
 
 When first cloning the repo, you need to use:
 
 ```sh
-git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-content.git content
+git clone --recurse-submodules git@github.com:timmyomahony/timmyomahony-portfolio-example-content.git content
 ```
 
 If already cloned, use the following to set up the submodule:
@@ -66,9 +67,13 @@ git commit
 git push origin main
 ```
 
+## Photos
+
+TODO - you can see how this works in the archived [`timmyomahony-photoblog`](https://github.com/timmyomahony/timmyomahony-photoblog) repo for the moment.
+
 ## Optimised Images
 
-You need to understand how Next's `<Image>` component works to optimise images, otherwise you will
+You need to understand how Next's `<Image>` component works to optimise images, otherwise you will use all your Vercel credits.
 
 In particular, it's worth understanding that when you use image optimisation with remote images (i.e. using a URL for your image `src` instead of statically importing an image in code with `import ... from ...`) then Next will generate a new version of your optimisation **on every request**. This will quickly eat into your usage metrics and potentially can cost you money.
 
