@@ -40,7 +40,7 @@ const HomePage = async () => {
         <header className="mb-0 flex min-h-[80vh] flex-col items-stretch justify-between md:mb-12 md:flex-row lg:mb-16 2xl:mb-20">
           <section className="w-full md:w-5/12">
             <img
-              className="m-0 block h-full w-auto object-cover p-0"
+              className="m-0 block h-full w-full object-cover p-0"
               src="https://cdn.timmyomahony.com/timmy-omahony.jpg"
               alt="Timmy O'Mahony profile picture"
             />
