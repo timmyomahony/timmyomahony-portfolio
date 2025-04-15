@@ -37,7 +37,7 @@ const HomePage = async () => {
     <Page>
       <Container>
         {/* Hero */}
-        <header className="mb-8 flex min-h-[80vh] flex-col items-stretch justify-between md:mb-12 md:flex-row lg:mb-16 2xl:mb-20">
+        <header className="mb-0 flex min-h-[80vh] flex-col items-stretch justify-between md:mb-12 md:flex-row lg:mb-16 2xl:mb-20">
           <section className="w-full md:w-5/12">
             <img
               className="m-0 block h-full w-auto object-cover p-0"
@@ -80,23 +80,25 @@ const HomePage = async () => {
           </section>
         </header>
         {/* Banner */}
-        <section className="rounded-none border border-black bg-black pb-3 pt-3 font-ibm text-xs text-beige">
-          <p className="flex items-center justify-center gap-2 tracking-wider">
-            <span>
-              <span className="font-medium">Looking for a portfolio?</span> The
-              code for this website is open source.{" "}
-              <Link
-                className="text-ruby hover:underline"
-                target="_blank"
-                href={config.repoUrl}
-              >
-                View on Github
-              </Link>{" "}
-            </span>
-          </p>
+        <section>
+          <div className="rounded-none border border-black bg-black px-4 pb-3 pt-3 font-ibm text-xs text-beige">
+            <p className="flex items-center justify-center gap-2 tracking-wider">
+              <span>
+                <span className="font-medium">Looking for a portfolio?</span>{" "}
+                The code for this website is open source.{" "}
+                <Link
+                  className="text-ruby hover:underline"
+                  target="_blank"
+                  href={config.repoUrl}
+                >
+                  View on Github
+                </Link>{" "}
+              </span>
+            </p>
+          </div>
         </section>
         {/* Projects */}
-        <section className="border-t border-t-black py-12 lg:py-16 xl:py-20">
+        <section className="border-t border-t-black py-8 lg:py-16 xl:py-20">
           <LatestEntriesGrid
             entries={featuredProjects}
             title="Featured Projects"
@@ -105,7 +107,7 @@ const HomePage = async () => {
           />
         </section>
         {/* Photos */}
-        <section className="border-t border-t-black py-12 lg:py-16 xl:py-20">
+        <section className="border-t border-t-black py-8 lg:py-16 xl:py-20">
           <LatestPhotosGrid
             photos={latestPhotos}
             title="Recent Photos"
@@ -114,7 +116,7 @@ const HomePage = async () => {
           />
         </section>
         {/* Entries */}
-        <section className="border-t border-t-black py-12 lg:py-16 xl:py-20">
+        <section className="border-t border-t-black py-8 lg:py-16 xl:py-20">
           <LatestEntriesList
             entries={latestPosts}
             title="Latest Posts"

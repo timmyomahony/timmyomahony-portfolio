@@ -14,7 +14,7 @@ export default function LatestEntriesList({
   linkText = "See All",
 }: Props) {
   return (
-    <div className="grid grid-cols-1 gap-10 md:gap-12 xl:grid-cols-3">
+    <div className="grid grid-cols-1 gap-8 md:gap-12 xl:grid-cols-3">
       <div className="col-span-1">
         <h2 className="heading-2">{title}</h2>
       </div>
@@ -38,7 +38,7 @@ export default function LatestEntriesList({
             );
           })}
         </ul>
-        <p className="text-center md:text-right xl:mt-6">
+        <p className="mt-8 text-start md:text-right xl:mt-6">
           <Link className="callout-0 hover:underline" href={urlPrefix}>
             {linkText}
           </Link>
