@@ -62,32 +62,20 @@ const HomePage = async () => {
               <Link className="font-medium hover:underline" href="/about/">
                 about me
               </Link>
-              . <br />
-              {/* <br />I also like taking{" "}
-              <Link
-                className="font-medium hover:underline"
-                href="/photos/albums/"
-              >
-                photos
-              </Link>{" "}
-              &mdash; find out what else I&apos;m up to right{" "}
-              <Link className="font-medium hover:underline" href="/now/">
-                now
-              </Link>
-              . */}
+              .
             </p>
             <SocialButtons />
           </section>
         </header>
         {/* Banner */}
         <section>
-          <div className="rounded-none border border-black bg-black px-4 pb-3 pt-3 font-ibm text-xs text-beige">
+          <div className="rounded-sm border border-black bg-black px-4 pb-3 pt-3 font-ibm text-xs text-beige">
             <p className="flex items-center justify-center gap-2 tracking-wider">
               <span>
                 <span className="font-medium">Looking for a portfolio?</span>{" "}
                 The code for this website is open source.{" "}
                 <Link
-                  className="text-ruby hover:underline"
+                  className="text-ruby underline"
                   target="_blank"
                   href={config.repoUrl}
                 >

@@ -21,7 +21,7 @@ export default function LatestPhotosGrid({
   linkText = "See All",
 }: Props) {
   return (
-    <div className="relative flex flex-col gap-8 xl:gap-20">
+    <div className="relative flex flex-col gap-8 md:gap-12 xl:gap-20">
       {(title || description) && (
         <div className="flex flex-col gap-2 lg:gap-4 xl:gap-6">
           {title && <h2 className="heading-2">{title}</h2>}
