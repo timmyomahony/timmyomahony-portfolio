@@ -83,6 +83,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/updated-django-project-structure-or-folder-layout",
         permanent: true,
       },
+      {
+        source: "/blog/filtering-annotations-django/",
+        destination: "/blog/filtering-on-annotations-in-django/",
+        permanent: true,
+      },
     ];
   },
 };
