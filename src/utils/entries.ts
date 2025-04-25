@@ -43,7 +43,7 @@ const getEntries = cache(async (type: MDXEntryType): Promise<MDXEntry[]> => {
     );
 
     // Finally, remove any drafts
-    return entries.filter((entry) => entry?.frontmatter.draft !== true);
+    return entries.filter((entry) => entry?.frontmatter?.draft !== true);
   } catch (error) {
     console.error("Error reading content directory:", error);
     return [];
@@ -60,7 +60,7 @@ const getAllTags = async (entries: MDXEntry[]): Promise<string[]> => {
   const tagSet = new Set<string>();
 
   entries.forEach((entry) => {
-    if (entry.frontmatter.tags) {
+    if (entry?.frontmatter?.tags) {
       entry.frontmatter.tags.forEach((tag) => tagSet.add(tag));
     }
   });
@@ -77,7 +77,7 @@ const getAllTags = async (entries: MDXEntry[]): Promise<string[]> => {
  */
 const getEntriesForTag = async (entries: MDXEntry[], tag: string) => {
   return entries.filter((entry) => {
-    if (entry.frontmatter.tags) {
+    if (entry?.frontmatter?.tags) {
       return entry.frontmatter.tags.includes(tag);
     }
     return false;
@@ -100,7 +100,7 @@ const getRelatedEntries = async (
   relatedEntries: MDXEntry[];
 }> => {
   const index = entries.findIndex(
-    (entry_) => entry_.frontmatter.slug === entry.frontmatter.slug,
+    (entry_) => entry_.frontmatter?.slug === entry?.frontmatter?.slug,
   );
 
   // Get "next" entry
