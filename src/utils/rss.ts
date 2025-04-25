@@ -1,9 +1,11 @@
 import RSS from "rss";
-
 import config from "@/../portfolio.config";
 import { getEntries } from "@/utils/entries";
+import fs from "fs";
+import path from "path";
 
-export async function GET() {
+// Generate RSS feed
+const generateFeed = async () => {
   const feed = new RSS({
     title: `${config.name} Website`,
     description: config.byline,
@@ -36,9 +38,13 @@ export async function GET() {
     });
   });
 
-  return new Response(feed.xml({ indent: true }), {
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-    },
-  });
-}
+  const xml = feed.xml({ indent: true });
+
+  //   Write to public folder
+  fs.writeFileSync(
+    path.join(path.join(process.cwd(), "public"), "feed.rss"),
+    xml,
+  );
+};
+
+export default generateFeed;
