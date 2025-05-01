@@ -57,10 +57,9 @@ const ProjectListPage = async () => {
           title="Here are some of the things I've been working on."
           subtitle={
             <>
-              I&apos;ve never had a <em>real job</em> so this is where I keep
-              track of all the things I&apos;ve been doing over the years,
-              whether it&apos;s new businesses I&apos;ve been building out,
-              client projects or just experiments.
+              Here is where I keep track of all the things I&apos;ve been doing
+              over the years, whether it&apos;s new businesses I&apos;ve been
+              building out, client projects or just experiments.
             </>
           }
         />
