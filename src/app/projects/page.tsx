@@ -34,7 +34,7 @@ const ProjectListPage = async () => {
 
   const pinnedEntries = entries
     .filter((entry) => {
-      return entry.frontmatter.pinned === true;
+      return entry?.frontmatter?.pinned === true;
     })
     .sort((a: MDXEntry, b: MDXEntry) => {
       const aOrdering = a.frontmatter.ordering ?? 0;

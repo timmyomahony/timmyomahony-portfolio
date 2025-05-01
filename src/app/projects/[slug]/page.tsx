@@ -19,7 +19,7 @@ const ProjectDetailPage = async ({ params }) => {
     <Page>
       <Container>
         <article className="mx-auto w-full lg:w-8/12 xl:w-7/12">
-          <EntrySimpleHeader entry={entry} suptitle="Latest Projects" />
+          <EntrySimpleHeader entry={entry} suptitle="Projects" />
           <div className="mt-12 lg:mt-20">
             <MDXContent components={MDXComponents} />
           </div>
