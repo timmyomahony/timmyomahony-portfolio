@@ -74,7 +74,7 @@ const generateMetadata = async () => {
     metadataBase: new URL(config.url),
     title: {
       template: `%s | ${config.name}`,
-      default: `Timmy O'Mahony | A freelance full-stack web developer from Dublin, Ireland.`,
+      default: `I'm Timmy O'Mahony, an independent software developer from Dublin, Ireland.`,
     },
     twitter: {
       card: "summary_large_image",
