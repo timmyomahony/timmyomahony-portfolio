@@ -4,7 +4,13 @@ import ClickableHeader from "@/components/ClickableHeader";
 import DateFormatter from "@/components/DateFormatter";
 import type { MDXEntry } from "@/types";
 
-const EntriesListItem = async ({ entry, urlPrefix }: { entry: MDXEntry, urlPrefix: string }) => {
+const EntriesListItem = async ({
+  entry,
+  urlPrefix,
+}: {
+  entry: MDXEntry;
+  urlPrefix: string;
+}) => {
   // Convert the markdown frontmatter description to HTML
   const descriptionHtml = await renderDescription(
     entry.frontmatter.description,
@@ -13,13 +19,13 @@ const EntriesListItem = async ({ entry, urlPrefix }: { entry: MDXEntry, urlPrefi
   return (
     <div className="flex gap-8 lg:gap-12">
       {entry.frontmatter.image && (
-        <div className="hidden md:block flex-shrink-0">
+        <div className="hidden flex-shrink-0 md:block">
           <Link
             className="hover:underline"
-            href={`${urlPrefix}/${entry.frontmatter.slug}`}
+            href={`/${urlPrefix}/${entry.frontmatter.slug}`}
           >
             <img
-              className="w-32 md:w-32 lg:h-56 object-cover"
+              className="w-32 object-cover md:w-32 lg:h-56"
               src={entry.frontmatter.image.url}
               alt={entry.frontmatter.title}
               height={512}
