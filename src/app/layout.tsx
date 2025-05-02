@@ -74,7 +74,7 @@ const generateMetadata = async () => {
     metadataBase: new URL(config.url),
     title: {
       template: `%s | ${config.name}`,
-      default: `${config.name} | %s`,
+      default: `${config.name} | Timmy O'Mahony`,
     },
     twitter: {
       card: "summary_large_image",
