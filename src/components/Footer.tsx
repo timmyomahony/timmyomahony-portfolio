@@ -141,6 +141,9 @@ const Footer = () => {
             </span>
           </span>
           <span className="flex gap-4">
+            <Link className="hover:underline" href="/feed.rss">
+              RSS
+            </Link>
             <Link className="hover:underline" href="/privacy/">
               Privacy
             </Link>
