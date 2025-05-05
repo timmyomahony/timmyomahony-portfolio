@@ -1,8 +1,6 @@
 import RSS from "rss";
 import config from "@/../portfolio.config";
 import { getEntries } from "@/utils/entries";
-import fs from "fs";
-import path from "path";
 
 // Generate RSS feed
 const generateFeed = async () => {
@@ -38,13 +36,7 @@ const generateFeed = async () => {
     });
   });
 
-  const xml = feed.xml({ indent: true });
-
-  //   Write to public folder
-  fs.writeFileSync(
-    path.join(path.join(process.cwd(), "public"), "feed.rss"),
-    xml,
-  );
+  return feed.xml({ indent: true });
 };
 
 export default generateFeed;
