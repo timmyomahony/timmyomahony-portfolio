@@ -88,6 +88,21 @@ const nextConfig: NextConfig = {
         destination: "/blog/filtering-on-annotations-in-django/",
         permanent: true,
       },
+      {
+        source: "/blog/using-sorl-thumbnail-and-easy-thumbnails-same-template/",
+        destination: "/blog/using-sorl-thumbnail-and-easy-thumbnails-in-the-same-template/",
+        permanent: true,
+      },
+      {
+        source: "/blog/sending-actions-down-components/",
+        destination: "/blog/sending-ember-actions-down-to-components/",
+        permanent: true,
+      },
+      {
+        source: "/blog/paginating-blog-posts-with-nextjs-app-directory/",
+        destination: "/blog/paginating-blog-posts-in-nextjs-app-directory/",
+        permanent: true,
+      }
     ];
   },
 };
