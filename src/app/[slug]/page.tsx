@@ -46,6 +46,8 @@ const generateStaticParams = async () => {
   }));
 };
 
+export const dynamicParams = false;
+
 export { generateStaticParams };
 
 export default GenericPage;

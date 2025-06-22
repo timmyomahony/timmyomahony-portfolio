@@ -40,6 +40,8 @@ const generateStaticParams = async () => {
   }));
 };
 
+export const dynamicParams = false;
+
 const generateMetadata = async ({ params }) => {
   const entries: MDXEntry[] = await getEntries("posts");
   const { slug } = await params;

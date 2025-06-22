@@ -35,6 +35,8 @@ const generateMetadata = async (params) => {
   };
 };
 
+export const dynamicParams = false;
+
 const generateStaticParams = async () => {
   const entries = await getEntries("all");
   const tags = await getAllTags(entries);

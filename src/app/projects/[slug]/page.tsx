@@ -35,6 +35,8 @@ const generateStaticParams = async () => {
   }));
 };
 
+export const dynamicParams = false;
+
 const generateMetadata = async ({ params }) => {
   const { slug } = await params;
   const entries = await getEntries("projects");

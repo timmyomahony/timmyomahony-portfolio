@@ -68,6 +68,8 @@ const generateStaticParams = async () => {
   }));
 };
 
+export const dynamicParams = false;
+
 export const metadata: Metadata = {
   title: "Blog posts & articles | Timmy O'Mahony",
   description: "Read my latest blog posts and articles - mostly tech",
