@@ -90,7 +90,8 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/blog/using-sorl-thumbnail-and-easy-thumbnails-same-template/",
-        destination: "/blog/using-sorl-thumbnail-and-easy-thumbnails-in-the-same-template/",
+        destination:
+          "/blog/using-sorl-thumbnail-and-easy-thumbnails-in-the-same-template/",
         permanent: true,
       },
       {
@@ -102,7 +103,14 @@ const nextConfig: NextConfig = {
         source: "/blog/paginating-blog-posts-with-nextjs-app-directory/",
         destination: "/blog/paginating-blog-posts-in-nextjs-app-directory/",
         permanent: true,
-      }
+      },
+      {
+        source:
+          "/blog/MAMP-phpmyadmin-and-big-database-imports-errors-or-timeouts/",
+        destination:
+          "/blog/mamp-phpmyadmin-and-big-database-imports-errors-or-timeouts/",
+        permanent: true,
+      },
     ];
   },
 };
