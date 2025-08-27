@@ -10,11 +10,15 @@ const Services = () => {
     >
       <Service
         title={"Workshop"}
-        price={<span>€800</span>}
+        price={
+          <span>
+            <span>€1,500</span>
+          </span>
+        }
         headline={
           <>
-            Get instant clarification on the big-picture questions keeping you
-            up at night.
+            Get instant clarify on the big-picture questions keeping you up at
+            night.
           </>
         }
         description={
@@ -45,7 +49,7 @@ const Services = () => {
       />
       <Service
         title={"Roadmap"}
-        price={"€4,500"}
+        price={"€5,000"}
         headline={
           <>
             Take the uncertainty out of app development with a detailed

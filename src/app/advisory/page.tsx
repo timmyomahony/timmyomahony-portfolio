@@ -9,6 +9,7 @@ import AdvisoryHero from "@/components/advisory/AdvisoryHero";
 import AdvisoryPainPoints from "@/components/advisory/AdvisoryPainPoints";
 import AdvisoryServices from "@/components/advisory/AdvisoryServices";
 import Page from "@/components/layouts/Page";
+import { Metadata } from "next";
 
 const AdvisoryPage = async () => {
   return (
@@ -43,6 +44,11 @@ const AdvisoryPage = async () => {
       </Container>
     </Page>
   );
+};
+
+export const metadata: Metadata = {
+  title: "Independent technical advice for ",
+  description: "",
 };
 
 export default AdvisoryPage;
